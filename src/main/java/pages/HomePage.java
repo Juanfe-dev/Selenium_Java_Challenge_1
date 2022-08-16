@@ -3,28 +3,32 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import utils.Waiters;
 
 import java.time.Duration;
+import java.util.ArrayList;
 
-public class HomePage {
+public class HomePage extends Waiters {
+
+
 
     //WebDriver
     private WebDriver driver;
+    //Waiters Object
+    private Waiters waiter = new Waiters();
+    //Locators : Loader
+    private By originLoaderLocator = By.xpath("//*[@class='loader']");
     //Locators : Cookie
     private By acceptCookieLocator = By.xpath("//button[contains(.,\"Aceptar y continuar\")]");
     //Locators : Popup
     //private By xBtnPopUpLocator = By.xpath("//*[@class='bx-modal__btn-close-icon']");
     private By xBtnPopUpLocator = By.xpath("//*[@class='bx-modal__btn-close-icon']");
-    //private By popupBoxLocator = By.cssSelector("//img[@src=\"https://images.prismic.io/vivaair-cms-test/5603c099-d0ca-472d-b0b9-729a0d7b4f70_POP-UP-VIVA-ELEGIDO-MAYO-2022.png?auto=compress,format\"]");
-    //Locators : Loader
-    private By originLoaderLocator = By.xpath("//*[@class='loader']");
     //Locators : Trip Origin
     private By tripOriginLocator = By.cssSelector("#station");
     private By originLocator = By.xpath("//*[text()='Armenia']/..");
+    private By originNewRouteLocator = By.xpath("(//*[@class='station__name --with-new-route'])");
     //Locators : Trip Destiny
     private By tripDestinyLocator = By.xpath("//*[text()='Destino']");
     private By destinyLocator = By.xpath("//div[contains(text(),'Barranquilla')]");
@@ -45,30 +49,13 @@ public class HomePage {
     public HomePage(WebDriver driver){
         this.driver = driver;
     }
-    //Waiters
-    public void waitLoader(){
+    //Should wait the loader
+    public void waitHomePageLoader(){
         FluentWait wait = new FluentWait(driver)
                 .withTimeout(Duration.ofSeconds(5))
                 .pollingEvery(Duration.ofSeconds(1))
                 .ignoring(NoSuchElementException.class);
         wait.until(ExpectedConditions.invisibilityOf(driver.findElement(originLoaderLocator)));
-    }
-    public void waitInSeconds(int time, int times){
-        FluentWait wait = new FluentWait(driver)
-                .pollingEvery(Duration.ofSeconds(times))
-                .ignoring(NoSuchElementException.class);
-        wait.withTimeout(Duration.ofSeconds(time));
-    }
-    public void waitInSeconds(int time){
-        FluentWait wait = new FluentWait(driver)
-                .ignoring(NoSuchElementException.class);
-        wait.withTimeout(Duration.ofSeconds(time));
-    }
-    public void waitElementIsVisible(int time, WebElement element){
-        FluentWait wait = new FluentWait(driver)
-                .pollingEvery(Duration.ofSeconds(1))
-                .ignoring(NoSuchElementException.class);
-        wait.until(ExpectedConditions.visibilityOf(element));
     }
     //Should Accept Cookies
     public void clickOnAcceptCookies(){
@@ -76,64 +63,85 @@ public class HomePage {
     }
     //Should Close PopUp
     public void clickXBtnPopUp(){
-        waitElementIsVisible(10, driver.findElement(xBtnPopUpLocator));
-            driver.findElement(xBtnPopUpLocator).click();
-        }
+        waitPresenceOfElementLocated(xBtnPopUpLocator, driver);
+        waitElementIsVisible(driver.findElement(xBtnPopUpLocator), driver);
+            driver.findElement(xBtnPopUpLocator).click();}
+
     //Should select Trip Origin
     public void clickOnTripOrigin(){
-        waitElementIsVisible(5, driver.findElement(tripOriginLocator));
+        waitPresenceOfElementLocated(tripOriginLocator, driver);
+        waitElementIsVisible(driver.findElement(tripOriginLocator), driver);
         driver.findElement(tripOriginLocator).click();
     }
     public void clickTripPlaceOrigin(){
-        waitElementIsVisible(5, driver.findElement(originLocator));
+        waitPresenceOfElementLocated(originLocator, driver);
+        waitElementIsVisible(driver.findElement(originLocator), driver);
         driver.findElement(originLocator).click();
     }
     //Should select Trip Destiny
     public void clickOnTripDestiny(){
-        waitElementIsVisible(5, driver.findElement(tripDestinyLocator));
+        waitPresenceOfElementLocated(tripDestinyLocator, driver);
+        waitElementIsVisible(driver.findElement(tripDestinyLocator), driver);
         driver.findElement(tripDestinyLocator).click();
     }
     public void clickTripPlaceDestiny(){
-        waitElementIsVisible(5, driver.findElement(destinyLocator));
+        waitPresenceOfElementLocated(destinyLocator, driver);
+        waitElementIsVisible(driver.findElement(destinyLocator), driver);
         driver.findElement(destinyLocator).click();
     }
     //Selecting Trip Date
     public void selectInicialDate(){
-        waitElementIsVisible(5, driver.findElement(firstDateLocator));
+        waitPresenceOfElementLocated(firstDateLocator, driver);
+        waitElementIsVisible(driver.findElement(firstDateLocator), driver);
         driver.findElement(firstDateLocator).click();
     }
     public void selectFinalDate(){
-        waitElementIsVisible(5, driver.findElement(lastDateLocator));
+        waitPresenceOfElementLocated(lastDateLocator, driver);
+        waitElementIsVisible(driver.findElement(lastDateLocator), driver);
         driver.findElement(lastDateLocator).click();
     }
     //Should select how many passengers
     public void clickOnPassengers() {
-        waitElementIsVisible(5, driver.findElement(passengerLocator));
+        waitPresenceOfElementLocated(passengerLocator, driver);
+        waitElementIsVisible(driver.findElement(passengerLocator), driver);
         driver.findElement(passengerLocator).click();
     }
     public void clickAdultBtn() {
-        waitElementIsVisible(5, driver.findElement(adultBtnLocator));
+        waitPresenceOfElementLocated(adultBtnLocator, driver);
+        waitElementIsVisible(driver.findElement(adultBtnLocator), driver);
         driver.findElement(adultBtnLocator).click();
     }
     public void clickChildrenBtn() {
-        waitElementIsVisible(5, driver.findElement(childrenBtnLocator));
+        waitPresenceOfElementLocated(childrenBtnLocator, driver);
+        waitElementIsVisible(driver.findElement(childrenBtnLocator), driver);
         driver.findElement(childrenBtnLocator).click();
     }
     public void clickInfantBtn() {
-        waitElementIsVisible(5, driver.findElement(infantBtnLocator));
+        waitPresenceOfElementLocated(infantBtnLocator, driver);
+        waitElementIsVisible(driver.findElement(infantBtnLocator), driver);
         driver.findElement(infantBtnLocator).click();
     }
     public void clickClosePassengerBox(){
-        waitElementIsVisible(5, driver.findElement(closePassengerBtnLocator));
+        waitPresenceOfElementLocated(closePassengerBtnLocator, driver);
+        waitElementIsVisible(driver.findElement(closePassengerBtnLocator), driver);
         driver.findElement(closePassengerBtnLocator).click();
     }
     //Should select search button
-    public void clickSearchBtn(){
-        waitElementIsVisible(5, driver.findElement(searchBtnLocator));
+    public BookingPage clickSearchBtn(){
+        waitPresenceOfElementLocated(searchBtnLocator, driver);
+        waitElementIsVisible(driver.findElement(searchBtnLocator), driver);
         driver.findElement(searchBtnLocator).click();
+        return new BookingPage(driver);
     }
 
-
-
-
+    //Arraylist Origin Cities
+    ArrayList cities = new ArrayList();
+    public void saveAllNewRutesCities(){
+        boolean flag = true;
+            for (int i = 1; i <= 8; i++) {
+                cities.add("(" + originNewRouteLocator + ")" + "[" + i + "]");
+                
+            }
+                ;
+    }
 }
