@@ -17,9 +17,12 @@ public class SomeTripTest extends BaseTest {
         //Selecting Trip Origin
             homePage.clickOnTripOrigin();
             homePage.waitHomePageLoader();
-            homePage.saveAllNewRutesCities();
+                        homePage.saveOriginCities();
+                        //homePage.printAllCities();
             homePage.clickTripPlaceOrigin();
         //Selecting Trip Destiny
+                        homePage.saveDestinyCities();
+                        //homePage.printAllCities();
             homePage.clickTripPlaceDestiny();
         //Selecting Date
             homePage.waitHomePageLoader();
