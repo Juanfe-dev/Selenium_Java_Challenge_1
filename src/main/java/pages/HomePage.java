@@ -121,8 +121,8 @@ public class HomePage extends Waiters {
             driver.findElement(tripOriginLocator).click();
         }
         public void clickTripPlaceOrigin() {
-            originLocator = By.xpath(setRandomLocator(originCities));
-            //originLocator = By.xpath("(//*[text()='Bucaramanga']/..)");
+            //originLocator = By.xpath(setRandomLocator(originCities));
+            originLocator = By.xpath("(//*[text()='Bucaramanga']/..)");
             waitPresenceOfElementLocated(originLocator, driver);
             waitElementIsVisible(driver.findElement(originLocator), driver);
             driver.findElement(originLocator).click();
@@ -163,8 +163,8 @@ public class HomePage extends Waiters {
             driver.findElement(tripDestinyLocator).click();
         }
         public void clickTripPlaceDestiny() {
-            destinyLocator = By.xpath(setRandomLocator(destinyCities));
-            //destinyLocator = By.xpath("(//*[text()='Cali']/..)");
+            //destinyLocator = By.xpath(setRandomLocator(destinyCities));
+            destinyLocator = By.xpath("(//*[text()='Cartagena']/..)");
             waitPresenceOfElementLocated(destinyLocator, driver);
             waitElementIsVisible(driver.findElement(destinyLocator), driver);
             driver.findElement(destinyLocator).click();

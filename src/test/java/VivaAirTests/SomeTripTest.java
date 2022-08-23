@@ -41,19 +41,28 @@ public class SomeTripTest extends BaseTest {
 
             if(bookingPage.isLowerHigherFilterBtnExisting() == true){
                     bookingPage.clickOnLowerPriceFilter();
+                    bookingPage.clickOnLowerPriceItem();
+                    bookingPage.clickContinueBuyCombo();
             } else {
                     bookingPage.clickOnLowerPriceItem();
+                    bookingPage.clickContinueBuyCombo();
             }
-            bookingPage.waitBookingPageLoader();
-            bookingPage.clickContinueBuyCombo();
-            bookingPage.waitBookingPageLoader();
+            //bookingPage.waitBookingPageLoader();
             if(bookingPage.isLowerHigherFilterBtnExisting() == true){
                     bookingPage.clickOnLowerPriceFilter();
+                    bookingPage.clickOnLowerPriceItem();
+                    bookingPage.clickContinueBuyCombo();
             } else {
                     bookingPage.clickOnLowerPriceItem();
+                    bookingPage.clickContinueBuyCombo();
             }
+
             bookingPage.waitBookingPageLoader();
-            bookingPage.clickContinueBuyCombo();
-            //bookingPage.waitBookingPageLoader();
+            bookingPage.completeAdultForm();
+            bookingPage.completeChildrenForm();
+            bookingPage.completeInfantForm();
+
+
+
     }
 }
