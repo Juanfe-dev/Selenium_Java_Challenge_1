@@ -4,8 +4,7 @@ import base.BaseTest;
 import org.testng.annotations.Test;
 import pages.BookingPage;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.AssertJUnit.*;
 
 public class SomeTripTest extends BaseTest {
 
@@ -17,28 +16,44 @@ public class SomeTripTest extends BaseTest {
         //Selecting Trip Origin
             homePage.clickOnTripOrigin();
             homePage.waitHomePageLoader();
-                        homePage.saveOriginCities();
-                        //homePage.printAllCities();
+            homePage.saveOriginCities();
             homePage.clickTripPlaceOrigin();
         //Selecting Trip Destiny
-                        homePage.saveDestinyCities();
-                        //homePage.printAllCities();
+            homePage.saveDestinyCities();
             homePage.clickTripPlaceDestiny();
         //Selecting Date
             homePage.waitHomePageLoader();
-            homePage.selectInicialDate();
-            homePage.selectFinalDate();
+            homePage.clickTripInitialDate();
+            homePage.clickTripFinalDate();
         //Selecting passengers
             homePage.clickOnPassengers();
-            for(int i = 0; i < 3; i++){
-                homePage.clickAdultBtn();
-                homePage.clickChildrenBtn();
-                homePage.clickInfantBtn();
-            }
+            homePage.clickChildrenBtn();
+            homePage.clickInfantBtn();
             homePage.clickClosePassengerBox();
-            //Booking Page Test
+            assertTrue("Trip dates were not available",homePage.getSearchBtnLocator().isEnabled());
+
+        //Booking Page Test
             BookingPage bookingPage = homePage.clickSearchBtn();
-            bookingPage.clickSomething();
-        ;
+            assertEquals(
+            "Booking page not available",
+            "Recuerda, nuestros mejores precios están aquí, en www.vivaair.com",
+                    bookingPage.getBookingPageText());
+
+            if(bookingPage.isLowerHigherFilterBtnExisting() == true){
+                    bookingPage.clickOnLowerPriceFilter();
+            } else {
+                    bookingPage.clickOnLowerPriceItem();
+            }
+            bookingPage.waitBookingPageLoader();
+            bookingPage.clickContinueBuyCombo();
+            bookingPage.waitBookingPageLoader();
+            if(bookingPage.isLowerHigherFilterBtnExisting() == true){
+                    bookingPage.clickOnLowerPriceFilter();
+            } else {
+                    bookingPage.clickOnLowerPriceItem();
+            }
+            bookingPage.waitBookingPageLoader();
+            bookingPage.clickContinueBuyCombo();
+            //bookingPage.waitBookingPageLoader();
     }
 }

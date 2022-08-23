@@ -20,7 +20,7 @@ public class Waiters {
     }
     public void waitLoader(WebDriver driver){
         FluentWait wait = new FluentWait(driver)
-                .withTimeout(Duration.ofSeconds(5))
+                .withTimeout(Duration.ofSeconds(20))
                 .pollingEvery(Duration.ofSeconds(1))
                 .ignoring(NoSuchElementException.class);
         wait.until(ExpectedConditions.invisibilityOf(driver.findElement(originLoaderLocator)));
@@ -44,11 +44,12 @@ public class Waiters {
 
     }
     public void waitPresenceOfElementLocated(By element, WebDriver driver) {
-        FluentWait wait = new FluentWait(driver)
+        FluentWait wait = new FluentWait(driver).withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofSeconds(1))
                 .ignoring(NoSuchElementException.class);
         wait.until(ExpectedConditions.presenceOfElementLocated(element));
     }
+
 
 
 }
