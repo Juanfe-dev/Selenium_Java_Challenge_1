@@ -12,17 +12,20 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Random;
 
+    /*
+    * This class contains the methods and locators from the homepage
+    * */
 public class HomePage extends Waiters {
 
 
     //Arraylist Origin Cities
-    ArrayList originCities = new ArrayList();
+    private ArrayList originCities = new ArrayList();
     //Arraylist Destiny Cities
-    ArrayList destinyCities = new ArrayList();
+    private ArrayList destinyCities = new ArrayList();
     //Arraylist Initial Trip Date
-    ArrayList initialTripDays = new ArrayList();//Arraylist First Trip Date
+    private ArrayList initialTripDays = new ArrayList();//Arraylist First Trip Date
     //Arraylist Final Trip Date
-    ArrayList finalTripDays = new ArrayList();
+    private ArrayList finalTripDays = new ArrayList();
     //WebDriver
     private WebDriver driver;
     //Waiters Object
@@ -32,21 +35,15 @@ public class HomePage extends Waiters {
     //Locators : Cookie
     private By acceptCookieLocator = By.xpath("//button[contains(.,\"Aceptar y continuar\")]");
     //Locators : Popup
-    //private By xBtnPopUpLocator = By.xpath("//*[@class='bx-modal__btn-close-icon']");
     private By xBtnPopUpLocator = By.xpath("//*[@class='bx-modal__btn-close-icon']");
     //Locators : Trip Origin
     private By tripOriginLocator = By.cssSelector("#station");
     private By originLocator;
-    //private By originLocator = By.xpath("//*[text()='Armenia']/..");
-    //private By originNewRouteLocator = By.xpath("(//*[@class='station__name --with-new-route'])");
-    //private By originOtherRoutesLocator = By.xpath("(//span[@class='station__name'])");
     //Locators : Trip Destiny
     private By tripDestinyLocator = By.xpath("//*[text()='Destino']");
     private By destinyLocator;
-    private By AllDestinyContainerLocator = By.cssSelector("div .station__popover");
     //Locators : Trip Date
     private By firstDateInputLocator = By.id("date");
-
     //private By firstDateLocator;
     private By firstDateLocator = By.xpath("//*[@class='calendar__date_picker__container--grid calendar__date_picker__container__day--first--mon']/div[text()=31]");
     private By lastDateLocator = By.xpath("//div[@class='calendar__date_picker__container--grid calendar__date_picker__container__day--first--thu']/div[text()=30]");

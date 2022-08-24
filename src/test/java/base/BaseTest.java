@@ -23,6 +23,9 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 
 
+    /*
+    * This class run and setup the project
+    * */
 public class BaseTest {
 
     private WebDriver driver;

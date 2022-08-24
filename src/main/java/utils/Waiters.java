@@ -9,12 +9,14 @@ import org.openqa.selenium.support.ui.FluentWait;
 
 import java.time.Duration;
 
+    /*
+    * This class contains the waiters
+    * */
 public class Waiters {
 
     private WebDriver driver;
     //Locators : Loader
     private By originLoaderLocator = By.xpath("//*[@class='loader']");
-
     public Waiters(){
         this.driver = driver;
     }
@@ -49,7 +51,4 @@ public class Waiters {
                 .ignoring(NoSuchElementException.class);
         wait.until(ExpectedConditions.presenceOfElementLocated(element));
     }
-
-
-
 }

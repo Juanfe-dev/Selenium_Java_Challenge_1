@@ -6,6 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 
+    /*
+    * Interface using for generate reports about the test
+    * */
 public class EventReporter implements WebDriverEventListener {
 
 

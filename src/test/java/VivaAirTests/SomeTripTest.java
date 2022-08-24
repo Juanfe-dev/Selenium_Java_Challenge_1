@@ -6,6 +6,9 @@ import pages.BookingPage;
 
 import static org.testng.AssertJUnit.*;
 
+        /*
+        * This class contains step by step the  execution of the test
+        * */
 public class SomeTripTest extends BaseTest {
 
     @Test //HomePage Test
@@ -38,7 +41,7 @@ public class SomeTripTest extends BaseTest {
             "Booking page not available",
             "Recuerda, nuestros mejores precios están aquí, en www.vivaair.com",
                     bookingPage.getBookingPageText());
-
+        //Selecting first combo
             if(bookingPage.isLowerHigherFilterBtnExisting() == true){
                     bookingPage.clickOnLowerPriceFilter();
                     bookingPage.clickOnLowerPriceItem();
@@ -47,6 +50,7 @@ public class SomeTripTest extends BaseTest {
                     bookingPage.clickOnLowerPriceItem();
                     bookingPage.clickContinueBuyCombo();
             }
+        //Selecting second combo
             //bookingPage.waitBookingPageLoader();
             if(bookingPage.isLowerHigherFilterBtnExisting() == true){
                     bookingPage.clickOnLowerPriceFilter();
@@ -56,13 +60,10 @@ public class SomeTripTest extends BaseTest {
                     bookingPage.clickOnLowerPriceItem();
                     bookingPage.clickContinueBuyCombo();
             }
-
+        //Fill out the forms
             bookingPage.waitBookingPageLoader();
             bookingPage.completeAdultForm();
             bookingPage.completeChildrenForm();
             bookingPage.completeInfantForm();
-
-
-
     }
 }
